@@ -162,11 +162,11 @@
     <div class="grid">
 
       <div id="success" class="success-message">
-        Thanks! Your message has been sent. I’ll get back to the email you entered as soon as I can with pricing and details.
+        Thanks! Your message has been sent. I'll get back to the email you entered as soon as I can with pricing and details.
       </div>
 
       <div class="contact-card">
-        <form id="contactForm" action="https://formspree.io/f/xkoeykgo" onsubmit="return false;">
+        <form id="contactForm" action="https://formspree.io/f/xkoeykgo">
 
           <label>Your name</label>
           <input type="text" name="Name" required>
@@ -189,26 +189,6 @@
         </form>
       </div>
 
-      <script>
-        const form = document.getElementById('contactForm');
-        const success = document.getElementById('success');
-
-        form.addEventListener('submit', async () => {
-          const data = new FormData(form);
-
-          const res = await fetch(form.action, {
-            method: "POST",
-            body: data,
-            headers: { "Accept": "application/json" }
-          });
-
-          if (res.ok) {
-            form.style.display = "none";
-            success.style.display = "block";
-          }
-        });
-      </script>
-
       <div class="info-box">
         <p><strong>How it works:</strong></p>
         <p>1. You send a quick description.<br>2. I reply with ideas + price.<br>3. If you like it, we start.</p>
@@ -221,6 +201,27 @@
   </section>
 
 </div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('success');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    const res = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (res.ok) {
+      form.style.display = "none";
+      success.style.display = "block";
+    }
+  });
+</script>
 
 </body>
 </html>
