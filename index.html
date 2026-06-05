@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+Here you go — just copy everything between the triple backticks:
+html<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Contact — TrackLink Digital</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
- 
+
   <style>
     :root {
       --bg1: #ffecd2;
@@ -17,14 +18,14 @@
       --border: #ffd4b8;
       --success: #22c55e;
     }
- 
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: system-ui, sans-serif;
     }
- 
+
     body {
       background: linear-gradient(135deg, var(--bg1), var(--bg2));
       color: var(--text);
@@ -33,36 +34,36 @@
       justify-content: center;
       min-height: 100vh;
     }
- 
+
     .container {
       width: 100%;
       max-width: 480px;
     }
- 
+
     .section-header {
       text-align: center;
       margin-bottom: 24px;
       padding: 0 10px;
     }
- 
+
     .section-header h2 {
       font-size: 32px;
       font-weight: 900;
       color: var(--accent-hover);
       text-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
- 
+
     .section-sub {
       color: var(--subtext);
       font-size: 15px;
       margin-top: 6px;
     }
- 
+
     .grid {
       display: grid;
       gap: 20px;
     }
- 
+
     .contact-card {
       background: var(--card);
       border: 2px solid var(--border);
@@ -70,14 +71,14 @@
       border-radius: 22px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
- 
+
     label {
       font-size: 15px;
       color: var(--subtext);
       margin-bottom: 6px;
       display: block;
     }
- 
+
     input, textarea, select {
       width: 100%;
       padding: 14px;
@@ -89,18 +90,18 @@
       font-size: 16px;
       transition: border 0.2s ease, background 0.2s ease;
     }
- 
+
     input:focus, textarea:focus, select:focus {
       border-color: var(--accent);
       background: #fff3e6;
       outline: none;
     }
- 
+
     textarea {
       min-height: 140px;
       resize: vertical;
     }
- 
+
     .btn-primary {
       width: 100%;
       padding: 14px;
@@ -114,12 +115,12 @@
       transition: background 0.25s ease, transform 0.25s ease;
       box-shadow: 0 4px 12px rgba(255, 123, 0, 0.4);
     }
- 
+
     .btn-primary:hover {
       background: var(--accent-hover);
       transform: translateY(-2px);
     }
- 
+
     .success-message {
       display: none;
       background: rgba(34, 197, 94, 0.2);
@@ -133,7 +134,7 @@
       font-weight: 600;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
- 
+
     .info-box {
       color: var(--text);
       font-size: 15px;
@@ -142,38 +143,38 @@
       padding: 0 10px;
       font-weight: 500;
     }
- 
+
     strong {
       color: var(--accent-hover);
     }
   </style>
 </head>
- 
+
 <body>
- 
+
 <div class="container">
- 
+
   <section class="section" id="contact">
     <div class="section-header">
       <h2>Tell me what you need</h2>
       <p class="section-sub">Fast replies, simple quotes, and no pressure.</p>
     </div>
- 
-    <div class="grid">
- 
-      <div id="success" class="success-message">
-        Thanks! Your message has been sent. I'll get back to the email you entered as soon as I can with pricing and details.
-      </div>
- 
+
+    <div id="success" class="success-message">
+      Thanks! Your message has been sent. I'll get back to the email you entered as soon as I can with pricing and details.
+    </div>
+
+    <div id="grid" class="grid">
+
       <div class="contact-card">
         <form id="contactForm" action="https://formspree.io/f/xkoeykgo">
- 
+
           <label>Your name</label>
           <input type="text" name="Name" required>
- 
+
           <label>Your email</label>
           <input type="email" name="Email" required>
- 
+
           <label>What are you interested in?</label>
           <select name="Interest" required>
             <option value="">Select an option</option>
@@ -181,14 +182,14 @@
             <option value="Websites">Websites</option>
             <option value="Both">Both</option>
           </select>
- 
+
           <label>Describe your project</label>
           <textarea name="Message" required></textarea>
- 
+
           <button type="submit" class="btn-primary">Send message</button>
         </form>
       </div>
- 
+
       <div class="info-box">
         <p><strong>How it works:</strong></p>
         <p>1. You send a quick description.<br>2. I reply with ideas + price.<br>3. If you like it, we start.</p>
@@ -196,32 +197,32 @@
           Based near <strong>Hamilton, Ohio</strong>
         </p>
       </div>
- 
+
     </div>
   </section>
- 
+
 </div>
- 
+
 <script>
   const form = document.getElementById('contactForm');
   const success = document.getElementById('success');
- 
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(form);
- 
+
     const res = await fetch(form.action, {
       method: "POST",
       body: data,
       headers: { "Accept": "application/json" }
     });
- 
+
     if (res.ok) {
-      document.querySelector('.contact-card').style.display = "none";
+      document.getElementById('grid').style.display = "none";
       success.style.display = "block";
     }
   });
 </script>
- 
+
 </body>
 </html>
