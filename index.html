@@ -7,12 +7,14 @@
 
   <style>
     :root {
-      --bg: #f7fbff;
+      --bg1: #ffecd2;
+      --bg2: #fcb69f;
       --card: #ffffff;
-      --accent: #3b82f6;
+      --accent: #ff7b00;
+      --accent-hover: #ff5c00;
       --text: #1e293b;
-      --subtext: #64748b;
-      --border: #d8e2ee;
+      --subtext: #5f6c80;
+      --border: #ffd4b8;
       --success: #22c55e;
     }
 
@@ -24,11 +26,12 @@
     }
 
     body {
-      background: var(--bg);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
       color: var(--text);
       padding: 20px;
       display: flex;
       justify-content: center;
+      min-height: 100vh;
     }
 
     .container {
@@ -43,9 +46,10 @@
     }
 
     .section-header h2 {
-      font-size: 28px;
-      font-weight: 800;
-      line-height: 1.2;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--accent-hover);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
 
     .section-sub {
@@ -61,10 +65,10 @@
 
     .contact-card {
       background: var(--card);
-      border: 1px solid var(--border);
-      padding: 22px;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      border: 2px solid var(--border);
+      padding: 24px;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     label {
@@ -79,10 +83,17 @@
       padding: 14px;
       margin-bottom: 16px;
       border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #f9fcff;
+      border: 2px solid var(--border);
+      background: #fff7f2;
       color: var(--text);
       font-size: 16px;
+      transition: border 0.2s ease, background 0.2s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      background: #fff3e6;
+      outline: none;
     }
 
     textarea {
@@ -97,39 +108,43 @@
       border: none;
       border-radius: 14px;
       color: white;
-      font-weight: 600;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 17px;
       cursor: pointer;
       transition: background 0.25s ease, transform 0.25s ease;
+      box-shadow: 0 4px 12px rgba(255, 123, 0, 0.4);
     }
 
     .btn-primary:hover {
-      background: #2563eb;
+      background: var(--accent-hover);
       transform: translateY(-2px);
     }
 
     .success-message {
       display: none;
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid #22c55e;
+      background: rgba(34, 197, 94, 0.2);
+      border: 2px solid #22c55e;
       padding: 16px;
       border-radius: 14px;
-      color: #15803d;
+      color: #166534;
       margin-bottom: 20px;
       text-align: center;
       font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .info-box {
-      color: var(--subtext);
+      color: var(--text);
       font-size: 15px;
       text-align: center;
       margin-top: 4px;
       padding: 0 10px;
+      font-weight: 500;
     }
 
     strong {
-      color: var(--text);
+      color: var(--accent-hover);
     }
   </style>
 </head>
@@ -138,7 +153,6 @@
 
 <div class="container">
 
-  <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="section-header">
       <h2>Tell me what you need</h2>
@@ -147,14 +161,12 @@
 
     <div class="grid">
 
-      <!-- SUCCESS MESSAGE -->
       <div id="success" class="success-message">
         Thanks! Your message has been sent. I’ll get back to the email you entered as soon as I can with pricing and details.
       </div>
 
-      <!-- CONTACT FORM (UNTOUCHED EXCEPT SUCCESS TEXT) -->
       <div class="contact-card">
-        <form id="contactForm" action="https://formspree.io/f/xkoeykgo" method="POST" onsubmit="return false;">
+        <form id="contactForm" action="https://formspree.io/f/xkoeykgo" onsubmit="return false;">
 
           <label>Your name</label>
           <input type="text" name="Name" required>
@@ -181,9 +193,7 @@
         const form = document.getElementById('contactForm');
         const success = document.getElementById('success');
 
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault(); // STOP redirect
-
+        form.addEventListener('submit', async () => {
           const data = new FormData(form);
 
           const res = await fetch(form.action, {
@@ -213,3 +223,4 @@
 </div>
 
 </body>
+</html>
