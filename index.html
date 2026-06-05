@@ -33,7 +33,7 @@
 
     .container {
       width: 100%;
-      max-width: 480px; /* PERFECT for phones */
+      max-width: 480px;
     }
 
     .section-header {
@@ -154,7 +154,7 @@
 
       <!-- CONTACT FORM (UNTOUCHED EXCEPT SUCCESS TEXT) -->
       <div class="contact-card">
-        <form id="contactForm" action="https://formspree.io/f/xkoeykgo" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/xkoeykgo" method="POST" onsubmit="return false;">
 
           <label>Your name</label>
           <input type="text" name="Name" required>
@@ -174,3 +174,42 @@
           <textarea name="Message" required></textarea>
 
           <button type="submit" class="btn-primary">Send message</button>
+        </form>
+      </div>
+
+      <script>
+        const form = document.getElementById('contactForm');
+        const success = document.getElementById('success');
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault(); // STOP redirect
+
+          const data = new FormData(form);
+
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: data,
+            headers: { "Accept": "application/json" }
+          });
+
+          if (res.ok) {
+            form.style.display = "none";
+            success.style.display = "block";
+          }
+        });
+      </script>
+
+      <div class="info-box">
+        <p><strong>How it works:</strong></p>
+        <p>1. You send a quick description.<br>2. I reply with ideas + price.<br>3. If you like it, we start.</p>
+        <p style="margin-top:12px;">
+          Based near <strong>Hamilton, Ohio</strong>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+</body>
