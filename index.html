@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact — TrackLink Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #f7fbff;
+      --card: #ffffff;
+      --accent: #3b82f6;
+      --text: #1e293b;
+      --subtext: #64748b;
+      --border: #d8e2ee;
+      --success: #22c55e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px; /* PERFECT for phones */
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 0 10px;
+    }
+
+    .section-header h2 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      color: var(--subtext);
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 22px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    label {
+      font-size: 15px;
+      color: var(--subtext);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #f9fcff;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      border: none;
+      border-radius: 14px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    .success-message {
+      display: none;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid #22c55e;
+      padding: 16px;
+      border-radius: 14px;
+      color: #15803d;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .info-box {
+      color: var(--subtext);
+      font-size: 15px;
+      text-align: center;
+      margin-top: 4px;
+      padding: 0 10px;
+    }
+
+    strong {
+      color: var(--text);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-header">
+      <h2>Tell me what you need</h2>
+      <p class="section-sub">Fast replies, simple quotes, and no pressure.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- SUCCESS MESSAGE -->
+      <div id="success" class="success-message">
+        Thanks! Your message has been sent. I’ll get back to the email you entered as soon as I can with pricing and details.
+      </div>
+
+      <!-- CONTACT FORM (UNTOUCHED EXCEPT SUCCESS TEXT) -->
+      <div class="contact-card">
+        <form id="contactForm" action="https://formspree.io/f/xkoeykgo" method="POST">
+
+          <label>Your name</label>
+          <input type="text" name="Name" required>
+
+          <label>Your email</label>
+          <input type="email" name="Email" required>
+
+          <label>What are you interested in?</label>
+          <select name="Interest" required>
+            <option value="">Select an option</option>
+            <option value="QR Codes">QR Codes</option>
+            <option value="Websites">Websites</option>
+            <option value="Both">Both</option>
+          </select>
+
+          <label>Describe your project</label>
+          <textarea name="Message" required></textarea>
+
+          <button type="submit" class="btn-primary">Send message</button>
