@@ -205,6 +205,7 @@
 <script>
   const form = document.getElementById('contactForm');
   const success = document.getElementById('success');
+  const card = document.querySelector('.contact-card');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -217,7 +218,7 @@
     });
 
     if (res.ok) {
-      form.style.display = "none";
+      card.style.display = "none";   // Hides the entire white box
       success.style.display = "block";
     }
   });
